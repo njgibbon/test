@@ -1,0 +1,20 @@
+name: push
+
+on: [push]
+
+jobs:
+  checkov:
+    runs-on: ubuntu-latest
+    name: Checkov
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          quiet: false
+          soft_fail: false
+          framework: terraform
+          output_format: cli
