@@ -7,5 +7,5 @@ resource "aws_eks_cluster" "test" {
 }
 
 module "test" {
-  source      = "../modules/test-1"
+  source      = "../test-1"
 }
