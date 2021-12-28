@@ -1,20 +1,20 @@
-name: push
+name: old
 
 on: [push]
 
-jobs:
-  checkov:
+jobs:  
+  test:
+    name: Test
     runs-on: ubuntu-latest
-    name: Checkov
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@master
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: Run Checkov action
-        id: checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          quiet: false
-          soft_fail: false
-          framework: terraform
-          output_format: cli
+    - name: Python - Set Up
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+        
+    - name: Python - Version
+      run: |
+        python --version
